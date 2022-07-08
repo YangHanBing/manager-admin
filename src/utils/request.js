@@ -1,5 +1,8 @@
 import axios from 'axios'
 import store from '../store'
+import {
+  ElMessage
+} from 'element-plus'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
@@ -24,6 +27,7 @@ service.interceptors.response.use(
     }
   },
   (err) => {
+    _showError(err.msg)
     return Promise.reject(err)
   })
 // 将请求都变成data传参
@@ -32,5 +36,10 @@ const request = (options) => {
     options.params = options.data || {}
   }
   return service(options)
+}
+// 响应提示信息
+const _showError = (message) => {
+  const info = message || '发生未知错误'
+  ElMessage.error(info)
 }
 export default request
