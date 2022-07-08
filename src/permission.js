@@ -1,7 +1,6 @@
 // 页面鉴权
 import router from './router'
 import store from './store'
-
 router.beforeEach(async (to, from, next) => {
   const token = store.getters.token
   if (token) {
@@ -20,21 +19,6 @@ router.beforeEach(async (to, from, next) => {
         } else {
           next('/login')
         }
-        // const response = await store.dispatch('user/getCount')
-        // const {
-        //   actionList
-        // } = await store.dispatch('user/getPermissionList')
-        // if (response && actionList) {
-        //   const routes = await store.dispatch('permission/filterRoutes', authoritys)
-        //   if (routes) {
-        //     routes.forEach(item => {
-        //       router.addRoute(item)
-        //     })
-        //     return next(to.path)
-        //   }
-        // } else {
-        //   next('/login')
-        // }
       }
     }
   } else {
@@ -45,3 +29,18 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 })
+// const response = await store.dispatch('user/getCount')
+// const {
+//   actionList
+// } = await store.dispatch('user/getPermissionList')
+// if (response && actionList) {
+//   const routes = await store.dispatch('permission/filterRoutes', authoritys)
+//   if (routes) {
+//     routes.forEach(item => {
+//       router.addRoute(item)
+//     })
+//     return next(to.path)
+//   }
+// } else {
+//   next('/login')
+// }

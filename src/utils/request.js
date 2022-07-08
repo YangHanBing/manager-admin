@@ -3,6 +3,8 @@ import store from '../store'
 import {
   ElMessage
 } from 'element-plus'
+// 引入loading加载
+import loading from './loading'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
@@ -10,17 +12,20 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {
+    loading.open()
     // 将token发送给后台
     const token = store.getters.token
     if (token) config.headers.Authorization = 'Bearer ' + token
     return config
   },
   (err) => {
+    loading.close()
     return Promise.reject(err)
   })
 // 响应拦截器
 service.interceptors.response.use(
   (res) => {
+    loading.close()
     // 对响应的结果进行加工
     if (res.data.code === 200) {
       return res.data.data
