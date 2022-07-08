@@ -6,12 +6,20 @@ import {
 export default {
   namespaced: true,
   state: {
-    token: getItem('token') || ''
+    token: getItem('token') || '',
+    count: '',
+    permissionList: ''
   },
   mutations: {
     setToken(state, token) {
       state.token = token
       setItem('token', token)
+    },
+    setCount(state, count) {
+      state.count = count
+    },
+    setPermissionList(state, permissionList) {
+      state.permissionList = permissionList
     }
   },
   actions: {
@@ -20,6 +28,21 @@ export default {
     }, payload) {
       const response = await User.login(payload)
       commit('setToken', response.token)
+    },
+    async getCount({
+      commit
+    }) {
+      const response = await User.getCount()
+      commit('setCount', response)
+      return response
+    },
+    async getPermissionList({
+      commit
+    }) {
+      const response = await User.getPermissionList()
+      commit('setPermissionList', response)
+      console.log(response);
+      return response
     }
   }
 }

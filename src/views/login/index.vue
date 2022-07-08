@@ -20,7 +20,6 @@
 import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import User from '../../api/user'
 const store = useStore()
 const router = useRouter()
 const loginForm = reactive({
@@ -36,10 +35,6 @@ const handleLoginSubmit = () => {
   loginform.value.validate(async (valid) => {
     if (!valid) return
     store.dispatch('user/login', loginForm)
-    if (store.getters.token) {
-      await User.getCount()
-      await User.getPermissionList()
-    }
     router.push('/')
   })
 }

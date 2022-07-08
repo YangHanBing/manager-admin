@@ -18,6 +18,7 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   (res) => {
+    // 对响应的结果进行加工
     if (res.data.code === 200) {
       return res.data.data
     }
