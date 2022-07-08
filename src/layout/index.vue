@@ -47,12 +47,12 @@ import AppMain from './AppMain'
       height:50px;
     }
     .app-main{
-      background-color: skyblue;
       position: fixed;
+      border:20px solid #eef0f3;
       bottom:0;
       right:0;
-      width: calc(100% - 200px);
-      height:calc(100% - 50px);
+      width: calc(100% - 240px);
+      height:calc(100% - 90px);
       z-index: 999;
     }
   }

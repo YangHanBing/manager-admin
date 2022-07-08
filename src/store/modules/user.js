@@ -11,9 +11,9 @@ export default {
     permissionList: ''
   },
   mutations: {
-    setToken(state, token) {
-      state.token = token
-      setItem('token', token)
+    setToken(state, res) {
+      state.token = res
+      setItem('token', res)
     },
     setCount(state, count) {
       state.count = count
@@ -27,7 +27,7 @@ export default {
       commit
     }, payload) {
       const response = await User.login(payload)
-      commit('setToken', response.token)
+      commit('setToken', response)
     },
     async getCount({
       commit

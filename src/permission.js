@@ -2,7 +2,7 @@
 import router from './router'
 import store from './store'
 router.beforeEach(async (to, from, next) => {
-  const token = store.getters.token
+  const token = store.getters.token.token
   if (token) {
     if (to.path === '/login') {
       next(from.path)

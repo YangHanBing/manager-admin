@@ -14,7 +14,7 @@ service.interceptors.request.use(
   (config) => {
     loading.open()
     // 将token发送给后台
-    const token = store.getters.token
+    const token = store.getters.token.token
     if (token) config.headers.Authorization = 'Bearer ' + token
     return config
   },
