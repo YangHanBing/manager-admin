@@ -9,7 +9,6 @@ import 'element-plus/dist/index.css'
 import '../src/styles/index.scss'
 // 页面鉴权
 // import './permission'
-console.log(store.getters.token);
 
 const app = createApp(App)
 

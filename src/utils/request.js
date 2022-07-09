@@ -15,11 +15,7 @@ service.interceptors.request.use(
     loading.open()
     // 将token发送给后台
     const token = store.getters.userInfo.token
-    if (token) {
-      config.headers.Authorization = 'Bearer ' + token
-      store.dispatch('user/getCount')
-      store.dispatch('user/getPermissionList')
-    }
+    if (token) config.headers.Authorization = 'Bearer ' + token
     return config
   },
   (err) => {

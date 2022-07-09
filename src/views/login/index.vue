@@ -35,7 +35,15 @@ const handleLoginSubmit = () => {
   loginform.value.validate(async (valid) => {
     if (!valid) return
     store.dispatch('user/login', loginForm)
-    // router.push('/')
+    if (store.getters.userInfo.token) {
+      store.dispatch('user/getCount')
+      store.dispatch('user/getPermissionList')
+      const count = store.getters.count
+      const primissList = store.getters.permissionList
+      if (count && primissList) {
+        router.push('/')
+      }
+    }
   })
 }
 </script>

@@ -7,19 +7,7 @@ router.beforeEach(async (to, from, next) => {
     if (to.path === '/login') {
       next(from.path)
     } else {
-      // const count = store.getters.count
-      const permission = store.getters.permissionList
-      if (permission) {
-        next()
-      } else {
-        const countList = await store.dispatch('user/getCount')
-        const permissionList = await store.dispatch('user/getPermissionList')
-        if (countList && permissionList) {
-          next(to.path)
-        } else {
-          next('/login')
-        }
-      }
+      next()
     }
   } else {
     if (to.path === '/login') {
@@ -29,6 +17,38 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 })
+
+// import router from './router'
+// import store from './store'
+// router.beforeEach(async (to, from, next) => {
+//   const token = store.getters.userInfo.token
+//   if (token) {
+//     if (to.path === '/login') {
+//       next(from.path)
+//     } else {
+//       // const count = store.getters.count
+//       const permission = store.getters.permissionList
+//       if (permission) {
+//         next()
+//       } else {
+//         const countList = await store.dispatch('user/getCount')
+//         const permissionList = await store.dispatch('user/getPermissionList')
+//         if (countList && permissionList) {
+//           next(to.path)
+//         } else {
+//           next('/login')
+//         }
+//       }
+//     }
+//   } else {
+//     if (to.path === '/login') {
+//       next()
+//     } else {
+//       next('/login')
+//     }
+//   }
+// })
+
 // const response = await store.dispatch('user/getCount')
 // const {
 //   actionList
