@@ -8,7 +8,7 @@ module.exports = defineConfig({
   devServer: {
     open: true,
     https: false,
-    port: 8888,
+    port: 9595,
     host: 'localhost',
     proxy: {
       [process.env.VUE_APP_BASE_API]: {

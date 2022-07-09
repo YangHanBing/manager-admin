@@ -6,14 +6,14 @@ import {
 export default {
   namespaced: true,
   state: {
-    token: getItem('token') || '',
+    userInfo: getItem('userInfo') || '',
     count: '',
     permissionList: ''
   },
   mutations: {
-    setToken(state, res) {
-      state.token = res
-      setItem('token', res)
+    setUserInfo(state, res) {
+      state.userInfo = res
+      setItem('userInfo', res)
     },
     setCount(state, count) {
       state.count = count
@@ -27,7 +27,7 @@ export default {
       commit
     }, payload) {
       const response = await User.login(payload)
-      commit('setToken', response)
+      commit('setUserInfo', response)
     },
     async getCount({
       commit
