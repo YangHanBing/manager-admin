@@ -8,7 +8,7 @@ import 'element-plus/dist/index.css'
 // 引入公共样式
 import '../src/styles/index.scss'
 // 页面鉴权
-import './permission'
+// import './permission'
 console.log(store.getters.token);
 
 const app = createApp(App)

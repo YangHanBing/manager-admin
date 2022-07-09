@@ -35,7 +35,7 @@ const handleLoginSubmit = () => {
   loginform.value.validate(async (valid) => {
     if (!valid) return
     store.dispatch('user/login', loginForm)
-    router.push('/')
+    // router.push('/')
   })
 }
 </script>
