@@ -1,7 +1,8 @@
 import User from '../../api/user'
 import {
   setItem,
-  getItem
+  getItem,
+  removeItem
 } from '../../utils/storage'
 export default {
   namespaced: true,
@@ -43,6 +44,17 @@ export default {
       commit('setPermissionList', response)
       console.log(response);
       return response
+    },
+    // 删除本地和vuex的token和用户信息
+    async logout({
+      commit
+    }) {
+      // const response = await User.logout()
+      // resetRouter()
+      commit('setUserInfo', '')
+      commit('setPermissionList', '')
+      removeItem('userInfo')
+      // return response
     }
   }
 }

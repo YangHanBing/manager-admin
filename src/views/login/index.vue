@@ -34,15 +34,11 @@ const rules = {
 const handleLoginSubmit = () => {
   loginform.value.validate(async (valid) => {
     if (!valid) return
-    store.dispatch('user/login', loginForm)
+    await store.dispatch('user/login', loginForm)
     if (store.getters.userInfo.token) {
-      store.dispatch('user/getCount')
-      store.dispatch('user/getPermissionList')
-      const count = store.getters.count
-      const primissList = store.getters.permissionList
-      if (count && primissList) {
-        router.push('/')
-      }
+      await store.dispatch('user/getCount')
+      await store.dispatch('user/getPermissionList')
+      router.push('/')
     }
   })
 }

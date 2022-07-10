@@ -50,6 +50,6 @@ export const generateMenus = (routes) => {
       route.children.push(...generateMenus(item.children))
     }
   })
-  console.log(result)
+  // console.log(result)
   return result
 }
